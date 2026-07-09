@@ -26,29 +26,29 @@ function criarCardEstudante(nome, idCard) {
     container.appendChild(card)
 }
 
-// NOVA FUNÇÃO: Decide se mostra o convite ou a tabela de presença
+
 function verificarParticipacao(idCard) {
     container.style.display = 'none'
     const dadosEvento = JSON.parse(localStorage.getItem(`evento_data_${idCard}`))
 
-    // Inicializa a lista de alunos participantes se não existir no evento
+    
     if (!dadosEvento.participantes) {
         dadosEvento.participantes = []
     }
 
-    // Verifica se o email do aluno logado já está na lista de participantes deste evento
+    
     const jaParticipa = dadosEvento.participantes.some(p => p.email === emailLogado)
 
     if (jaParticipa) {
-        // Se já aceitou o evento no passado, abre a tabela direto
+        
         verChamadaEstudante(dadosEvento)
     } else {
-        // Se ainda não respondeu, mostra a tela de convite
+        
         mostrarConviteParticipacao(dadosEvento)
     }
 }
 
-// NOVA FUNÇÃO: Cria a interface de escolha (Sim / Não)
+
 function mostrarConviteParticipacao(dadosEvento) {
     const divConvite = document.createElement('div')
     divConvite.id = 'painel-convite'
@@ -59,7 +59,7 @@ function mostrarConviteParticipacao(dadosEvento) {
     `
     body.appendChild(divConvite)
 
-    // Se aceitar, salva o aluno no evento e abre a tabela
+    
     divConvite.querySelector('#btn-aceitar').onclick = () => {
         dadosEvento.participantes.push({
             nome: dadosEstudante.nome,
@@ -71,14 +71,14 @@ function mostrarConviteParticipacao(dadosEvento) {
         verChamadaEstudante(dadosEvento)
     }
 
-    // Se recusar, apenas volta para a lista de cards
+    
     divConvite.querySelector('#btn-recusar').onclick = () => {
         divConvite.remove()
         container.style.display = 'block'
     }
 }
 
-// Ajustada para receber o objeto do evento direto
+
 function verChamadaEstudante(dadosEvento) {
     const tabelaAntiga = body.querySelector('table')
     if (tabelaAntiga) tabelaAntiga.remove()

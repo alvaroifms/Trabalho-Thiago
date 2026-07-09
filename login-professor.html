@@ -25,10 +25,10 @@
             const usuario = document.querySelector('#prof-usuario').value
             const senha = document.querySelector('#prof-senha').value
 
-            // Login fixo temporário para testes do Admin/Professor
+            
             if (usuario === 'admin' && senha === '1234') {
                 alert('Acesso autorizado, Professor!')
-                window.location.href = 'painel-professor.html' // Nova página do professor
+                window.location.href = 'painel-professor.html' 
             } else {
                 alert('Credenciais de professor inválidas!')
             }

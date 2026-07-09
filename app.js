@@ -2,10 +2,10 @@ const body = document.querySelector('body')
 const criar = document.querySelector('#criar')
 const container = document.querySelector('#container')
 
-// Carrega o contador salvo para os cards ou começa em 0 se for a primeira vez
+
 let contador = parseInt(localStorage.getItem('contador_global')) || 0
 
-// Função auxiliar para carregar todos os eventos salvos logo que a página abre
+
 function carregarEventosSalvos() {
     container.innerHTML = ''
     for (let i = 0; i < localStorage.length; i++) {
@@ -17,7 +17,7 @@ function carregarEventosSalvos() {
     }
 }
 
-// Evento de clique para o professor criar um novo formulário de evento
+
 criar.onclick = () => {
     const form = document.createElement('form')
     form.innerHTML = `
@@ -29,16 +29,16 @@ criar.onclick = () => {
         const nome = form.querySelector('.nome-evento').value
         const idCard = `evento${contador}`
 
-        // Estrutura inicial do objeto do evento para salvar no banco
+      
         const novoEvento = {
             idCard: idCard,
             nome: nome,
             totalChamadas: 0,
-            participantes: [], // Começa sem nenhum aluno matriculado
+            participantes: [], 
             historicoPresenca: {} 
         }
 
-        // Salva no localStorage e renderiza o card visual
+     
         localStorage.setItem(`evento_data_${idCard}`, JSON.stringify(novoEvento))
         criarElementoCard(nome, idCard)
 
@@ -49,25 +49,25 @@ criar.onclick = () => {
     body.appendChild(form)
 }
 
-// Cria o componente visual do Card na tela do professor
+
 function criarElementoCard(nome, idCard) {
     const card = document.createElement('div')
     card.classList.add('card')
     card.id = idCard
     
-    // Texto com o nome do evento
+    
     const textoNome = document.createElement('span')
     textoNome.innerText = nome
     card.appendChild(textoNome)
 
-    // Botão de excluir o evento (X)
+    
     const btnExcluir = document.createElement('button')
     btnExcluir.innerText = 'X'
     btnExcluir.classList.add('btn-excluir')
     btnExcluir.style.marginLeft = '15px'
     
     btnExcluir.onclick = (e) => {
-        e.stopPropagation() // Impede que o clique abra a tabela de chamada
+        e.stopPropagation() 
         
         if (confirm(`Deseja mesmo excluir o evento "${nome}"?`)) {
             localStorage.removeItem(`evento_data_${idCard}`)
@@ -76,14 +76,14 @@ function criarElementoCard(nome, idCard) {
     }
     card.appendChild(btnExcluir)
 
-    // Ao clicar no card, abre o painel da lista de chamada
+   
     card.onclick = () => {
         chamada(idCard) 
     }
     container.appendChild(card)
 }
 
-// Gera a interface da tabela de chamada do evento selecionado
+
 function chamada(idCard) {
     container.style.display = 'none'
     criar.style.display = 'none'
@@ -99,14 +99,14 @@ function chamada(idCard) {
     tabela.setAttribute('height', '500')
     tabela.setAttribute('border', '1px')
 
-    // Botão para voltar à listagem principal de eventos
+   
     const btnVoltar = document.createElement('button')
     btnVoltar.classList.add('btn-voltar')
     btnVoltar.innerText = 'Voltar'
     btnVoltar.onclick = () => { voltar(tabela, btnVoltar) }
     body.appendChild(btnVoltar)
 
-    // Cabeçalho estruturado com colspan para alinhar perfeitamente com o botão "+"
+   
     const linhaCabecalho = document.createElement('tr')
     linhaCabecalho.id = 'linha-cabecalho'
     linhaCabecalho.innerHTML = `
@@ -123,12 +123,12 @@ function chamada(idCard) {
     linhaCabecalho.querySelector('#th-porcentagem').appendChild(btnMais)
     tabela.append(linhaCabecalho)
 
-    // Garante que a propriedade existe para não quebrar o código
+    
     if (!dadosEvento.participantes) {
         dadosEvento.participantes = []
     }
     
-    // Pega APENAS a lista de alunos que aceitaram o evento
+    
     const listaEstudantesReais = dadosEvento.participantes
 
     listaEstudantesReais.forEach((aluno) => {
@@ -141,7 +141,7 @@ function chamada(idCard) {
         tabela.append(tr)
     })
 
-    // Função interna que constrói e renderiza uma coluna inteira de chamada
+    
     const renderizarColunaChamada = (colunaIndex) => {
         const trs = tabela.querySelectorAll('tr')
         
@@ -189,16 +189,16 @@ function chamada(idCard) {
         })
     }
 
-    // Carrega colunas e histórico de presenças de aulas antigas que estavam gravadas
+
     for (let c = 0; c < dadosEvento.totalChamadas; c++) {
         renderizarColunaChamada(c)
     }
     
-    // Atualiza o display das porcentagens iniciais após montar o histórico
+
     const trsAtualizar = tabela.querySelectorAll('tr')
     trsAtualizar.forEach((linha, index) => { if (index > 0) atualizarPorcentagemDoAluno(linha) })
 
-    // Adiciona uma nova aula ao clicar no botão "+"
+
     btnMais.onclick = () => {
         const proximoIndexCol = dadosEvento.totalChamadas
         dadosEvento.totalChamadas++
@@ -214,7 +214,7 @@ function chamada(idCard) {
     body.appendChild(tabela)
 }
 
-// Calcula a taxa de faltas atual da linha com base nas colunas totais da tabela
+
 const atualizarPorcentagemDoAluno = (linha) => {
     const totalChamadas = linha.parentElement.querySelectorAll('#linha-cabecalho th').length - 2
     if (totalChamadas <= 0) return
@@ -225,7 +225,7 @@ const atualizarPorcentagemDoAluno = (linha) => {
     linha.querySelector('.contador-porcentagem').innerText = `${porcentagem}%`
 }
 
-// Restaura a visualização para o painel de cards original do professor
+
 function voltar(tabela, botao) {
     tabela.remove()   
     botao.remove()    
@@ -233,5 +233,5 @@ function voltar(tabela, botao) {
     criar.style.display = 'block'
 }
 
-// Inicializa o sistema renderizando os dados que já existem na memória do navegador
+
 carregarEventosSalvos()
