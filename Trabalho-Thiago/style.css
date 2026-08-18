@@ -1,0 +1,617 @@
+
+:root {
+    --azul-ifms: #0066b2;
+    --azul-hover: #004b87;
+    --verde-ifms: #27ae60;
+    --verde-hover: #1e8449;
+    --laranja-ifms: #e67e22;
+    --laranja-hover: #d35400;
+    --fundo-pagina: #f4f7f9;
+    --card-fundo: #ffffff;
+    --texto-principal: #2c3e50;
+    --texto-suave: #6c757d;
+    --borda-suave: #e2e8f0;
+    --vermelho-falta: #e74c3c;
+    --sombra-card: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    --sombra-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--fundo-pagina);
+    color: var(--texto-principal);
+    min-height: 100vh;
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.barra-institucional {
+    width: 100%;
+    background-color: var(--azul-ifms);
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 102, 178, 0.2);
+}
+
+.logo-mock {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.3px;
+}
+
+.logo-mock span {
+    font-size: 11px;
+    display: block;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+.container-central {
+    margin-top: 75px;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+h2 {
+    color: var(--azul-ifms);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 10px 0 15px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.subtitulo {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+
+form {
+    background: var(--card-fundo);
+    padding: 28px 24px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-card);
+    border: 1px solid var(--borda-suave);
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--borda-suave);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--texto-principal);
+    background-color: #fafafa;
+    transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--azul-ifms);
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 102, 178, 0.15);
+}
+
+
+button, input[type="submit"], input[type="button"] {
+    cursor: pointer;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+input[type="submit"], #criar {
+    background-color: var(--azul-ifms);
+    color: white;
+    width: 100%;
+}
+
+input[type="submit"]:hover, #criar:hover {
+    background-color: var(--azul-hover);
+    transform: translateY(-1px);
+}
+
+
+#btn-ir-cadastro, .btn-voltar, .btn-sair {
+    background-color: var(--laranja-ifms);
+    color: white;
+}
+
+#btn-ir-cadastro:hover, .btn-voltar:hover, .btn-sair:hover {
+    background-color: var(--laranja-hover);
+}
+
+.btn-voltar {
+    margin-bottom: 15px;
+    align-self: flex-start;
+}
+
+
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 650px;
+    margin-top: 15px;
+}
+
+.card {
+    background: var(--card-fundo);
+    border-left: 6px solid var(--verde-ifms);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--sombra-card);
+    border-top: 1px solid var(--borda-suave);
+    border-right: 1px solid var(--borda-suave);
+    border-bottom: 1px solid var(--borda-suave);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.25s ease;
+}
+
+.card span {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--azul-ifms); 
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-hover);
+}
+
+.btn-excluir {
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+}
+
+.btn-excluir:hover {
+    background-color: #dc2626;
+    color: white;
+}
+
+.tabela-chamada {
+    width: 100%;
+    background: var(--card-fundo);
+    margin-top: 10px;
+    border-radius: 10px;
+    box-shadow: var(--sombra-card);
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    border: 1px solid var(--borda-suave);
+}
+
+.tabela-chamada th {
+    background-color: var(--azul-ifms);
+    color: white;
+    padding: 14px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 2px solid var(--borda-suave);
+}
+
+.tabela-chamada td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--borda-suave);
+    color: var(--texto-principal);
+    text-align: center;
+    font-size: 14px;
+}
+
+.tabela-chamada tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-chamada td:first-child, 
+.tabela-chamada th:first-child {
+    text-align: left;
+    padding-left: 18px;
+    font-weight: 600;
+    min-width: 180px;
+}
+
+
+.tabela-chamada button.presente {
+    background-color: var(--verde-ifms) !important;
+    color: white !important;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(39, 174, 96, 0.2);
+}
+
+.tabela-chamada button.falta {
+    background-color: var(--vermelho-falta) !important;
+    color: white !important;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+}
+
+
+.tabela-chamada th input[type="text"] {
+    padding: 5px;
+    font-size: 11px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.95);
+    width: 60px;
+}
+
+input[value="+"] {
+    background-color: var(--verde-ifms);
+    color: white;
+    padding: 4px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+
+
+@media (max-width: 768px) {
+    .container-central {
+        margin-top: 65px;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
+
+
+    .tabela-chamada {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+
+.container-selecao {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 30px;
+}
+
+.card-papel {
+    background: var(--card-fundo);
+    border: 2px solid var(--borda-suave);
+    border-radius: 16px;
+    padding: 35px 25px;
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--sombra-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.card-papel .icone {
+    font-size: 42px;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+}
+
+.card-papel h3 {
+    color: var(--azul-ifms);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.card-papel p {
+    color: var(--texto-suave);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+
+.card-papel:hover {
+    border-color: var(--azul-ifms);
+    transform: translateY(-6px);
+    box-shadow: var(--sombra-hover);
+}
+
+.card-papel:hover .icone {
+    transform: scale(1.15);
+}
+
+
+.card-papel.aluno:hover {
+    border-color: var(--verde-ifms);
+}
+
+@media (max-width: 600px) {
+    .container-selecao {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .card-papel {
+        width: 100%;
+        padding: 25px 20px;
+    }
+}
+
+/* ==========================================
+   HEADER INSTITUCIONAL (Barra do Topo)
+   ========================================== */
+.barra-institucional {
+    width: 100%;
+    background-color: #0066b2; /* Azul IFMS */
+    color: white;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-area .sigla {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.logo-area .subtexto {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    margin-top: 3px;
+}
+
+/* ==========================================
+   CONTAINER E PAINEL CENTRAL (Alinhamento)
+   ========================================== */
+.container-central {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.painel-boas-vindas {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    max-width: 750px;
+    width: 100%;
+    text-align: center;
+}
+
+.painel-boas-vindas h2 {
+    color: #0066b2;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.painel-boas-vindas .subtitulo {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+
+
+.container-selecao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+}
+
+.card-papel {
+    background: #fafafa;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 30px 20px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-papel .icone {
+    font-size: 38px;
+}
+
+.card-papel h3 {
+    color: #2c3e50;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.card-papel p {
+    color: #6c757d;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+
+.card-papel.professor:hover {
+    border-color: #0066b2;
+    background: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 102, 178, 0.12);
+}
+
+.card-papel.aluno:hover {
+    border-color: #27ae60;
+    background: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.12);
+}
+
+
+@media (max-width: 640px) {
+    .container-selecao {
+        grid-template-columns: 1fr; 
+    }
+
+    .painel-boas-vindas {
+        padding: 25px 18px;
+    }
+}
+
+/* ==========================================
+   ESTILIZAÇÃO UNIFICADA DAS TABELAS (PROFESSOR & ESTUDANTE)
+   ========================================== */
+
+/* Container da Tabela com Rolagem Suave para Mobile */
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Estilo Base da Tabela */
+.tabela-chamada {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+/* Cabeçalho */
+.tabela-chamada thead tr {
+    background-color: #0066b2; /* Azul Institucional IFMS */
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.tabela-chamada th,
+.tabela-chamada td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+}
+
+.tabela-chamada th {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* Efeito Zebra para as Linhas */
+.tabela-chamada tbody tr:nth-of-type(even) {
+    background-color: #f8fafc;
+}
+
+.tabela-chamada tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* Alinhamento do Nome do Aluno à Esquerda */
+.tabela-chamada td:first-child,
+.tabela-chamada th:first-child {
+    text-align: left;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+/* ==========================================
+   BADGES DE STATUS (PRESENTE / FALTA)
+   ========================================== */
+
+.status-texto-presente,
+.status-texto-falta {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 80px;
+}
+
+/* Presente (Verde) */
+.status-texto-presente {
+    background-color: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+/* Falta (Vermelho) */
+.status-texto-falta {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}

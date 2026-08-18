@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro do Estudante</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+
+    <h2>Cadastro do Estudante</h2>
+    
+    <form id="form-cadastro">
+        <input type="text" placeholder="Nome Completo:" id="cad-nome" required><br><br>
+        <input type="email" placeholder="E-mail:" id="cad-email" required><br><br>
+        <input type="password" placeholder="Senha:" id="cad-senha" required><br><br>
+        
+       <select id="cad-periodo" required>
+    <option value="" disabled selected>Selecione o Ano/Série</option>
+    <option value="6-fundamental">6º Ano - Ensino Fundamental</option>
+    <option value="7-fundamental">7º Ano - Ensino Fundamental</option>
+    <option value="8-fundamental">8º Ano - Ensino Fundamental</option>
+    <option value="9-fundamental">9º Ano - Ensino Fundamental</option>
+    <option value="1-medio">1º Ano - Ensino Médio</option>
+    <option value="2-medio">2º Ano - Ensino Médio</option>
+    <option value="3-medio">3º Ano - Ensino Médio</option>
+    <option value="superior-1">1º Ano - Ensino Superior</option>
+    <option value="superior-2">2º Ano - Ensino Superior</option>
+    <option value="superior-3">3º Ano - Ensino Superior</option>
+    <option value="superior-4">4º Ano - Ensino Superior</option>
+</select><br><br>
+        
+        <input type="text" placeholder="Instituição de Ensino:" id="cad-instituicao" required><br><br>
+        
+        <input type="submit" value="Cadastrar">
+        <button type="button" id="btn-voltar">Voltar</button>
+    </form>
+
+    <script src="cadastro-estudante.js"></script>
+</body>
+</html>
